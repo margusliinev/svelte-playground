@@ -3,11 +3,12 @@ import { mysqlTable, varchar, bigint, timestamp, date, boolean } from 'drizzle-o
 export const usersTable = mysqlTable('users', {
 	id: bigint({ unsigned: true, mode: 'number' }).autoincrement().primaryKey(),
 	name: varchar({ length: 255 }).notNull(),
-	email: varchar({ length: 255 }).notNull(),
+	email: varchar({ length: 255 }).notNull().unique(),
 	password: varchar({ length: 255 }).notNull(),
 	birthday: date({ mode: 'date' }),
 	is_verified: boolean().notNull().default(false),
 	is_deleted: boolean().notNull().default(false),
+	verified_at: timestamp({ mode: 'date' }),
 	created_at: timestamp({ mode: 'date' }).notNull().defaultNow(),
 	updated_at: timestamp({ mode: 'date' }).notNull().defaultNow().onUpdateNow()
 });
