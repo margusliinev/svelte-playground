@@ -1,17 +1,8 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 @theme {
     --font-sans: 'Inter', sans-serif;
 
-    --color-background: oklch(0.985 0 0);
-    --color-foreground: oklch(0.141 0.005 285.823);
-}
-
-@layer theme {
-    [data-theme='dark'] {
-        --color-background: oklch(0.21 0.006 285.885);
-        --color-foreground: oklch(0.985 0 0);
-    }
+    --color-background: oklch(0.21 0.006 285.885);
+    --color-foreground: oklch(1 0 0);
 }
