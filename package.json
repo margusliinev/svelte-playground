@@ -12,6 +12,7 @@
         "dev": "vite dev",
         "build": "vite build",
         "preview": "vite preview",
+        "start": "node --env-file=.env build",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "format": "prettier --write .",
         "db:generate": "drizzle-kit generate",
@@ -20,6 +21,10 @@
         "db:check": "drizzle-kit check",
         "db:push": "drizzle-kit push",
         "db:pull": "drizzle-kit pull"
+    },
+    "dependencies": {
+        "pino": "9.6.0",
+        "pino-pretty": "13.0.0"
     },
     "devDependencies": {
         "@sveltejs/adapter-node": "5.2.12",
@@ -31,8 +36,6 @@
         "drizzle-orm": "0.41.0",
         "drizzle-seed": "0.3.1",
         "mysql2": "3.14.0",
-        "pino": "9.6.0",
-        "pino-pretty": "13.0.0",
         "prettier": "3.5.3",
         "prettier-plugin-svelte": "3.3.3",
         "prettier-plugin-tailwindcss": "0.6.11",

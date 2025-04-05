@@ -1,15 +1,13 @@
 import { env } from '$env/dynamic/private';
 import pino from 'pino';
 
-const dev = env.NODE_ENV === 'development';
-
 export const httpLogger = pino({
     base: null,
     level: 'info',
     timestamp: pino.stdTimeFunctions.isoTime,
-    formatters: { level: (label) => ({ level: label }), log: (obj) => (dev ? { msg: obj.msg } : obj) },
+    formatters: { level: (label) => ({ level: label }) },
     transport: {
-        target: dev ? 'pino-pretty' : 'pino/file',
-        options: dev ? { colorize: true, singleLine: true } : { destination: 1 },
+        target: env.ENV_ID === 'dev' ? 'pino-pretty' : 'pino/file',
+        options: env.ENV_ID === 'dev' ? { colorize: true, singleLine: true } : { destination: 1 },
     },
 });
