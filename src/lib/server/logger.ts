@@ -7,7 +7,7 @@ export const httpLogger = pino({
     timestamp: pino.stdTimeFunctions.isoTime,
     formatters: { level: (label) => ({ level: label }) },
     transport: {
-        target: env.ENV_ID === 'dev' ? 'pino-pretty' : 'pino/file',
-        options: env.ENV_ID === 'dev' ? { colorize: true, singleLine: true } : { destination: 1 },
+        target: env.NODE_ENV === 'development' ? 'pino-pretty' : 'pino/file',
+        options: env.NODE_ENV === 'development' ? { colorize: true, singleLine: true } : { destination: 1 },
     },
 });

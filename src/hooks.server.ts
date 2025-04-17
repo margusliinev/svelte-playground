@@ -25,8 +25,8 @@ export const logging = (async ({ event, resolve }) => {
     };
 
     const level = status >= 500 ? 'error' : status >= 400 ? 'warn' : 'info';
-    if (env.ENV_ID === 'dev') httpLogger[level](`${method} ${path} - ${status} (${duration}ms)`);
-    if (env.ENV_ID === 'live') httpLogger[level](logData);
+    if (env.NODE_ENV === 'development') httpLogger[level](`${method} ${path} - ${status} (${duration}ms)`);
+    if (env.NODE_ENV === 'production') httpLogger[level](logData);
 
     return response;
 }) satisfies Handle;

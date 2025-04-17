@@ -1,7 +1,8 @@
+@import '@fontsource-variable/inter';
 @import url('preflight.css');
 
 :root {
-    --font-inter: 'Inter', sans-serif;
+    --font-inter: 'Inter Variable', sans-serif;
     --color-background: oklch(0.21 0.006 285.885);
     --color-foreground: oklch(1 0 0);
 }
