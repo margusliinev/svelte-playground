@@ -1,0 +1,168 @@
+*,
+::after,
+::before,
+::backdrop {
+    padding: 0;
+    margin: 0;
+    border: 0 solid;
+    box-sizing: border-box;
+}
+
+html {
+    tab-size: 4;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+hr {
+    color: inherit;
+    height: 0;
+    border-top-width: 1px;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+code,
+kbd,
+samp,
+pre {
+    font-size: 1em;
+}
+
+ol,
+ul,
+menu {
+    list-style: none;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: inherit;
+    background-color: transparent;
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    border-radius: 0;
+    opacity: 1;
+}
+
+button,
+input:where([type='button'], [type='reset'], [type='submit']) {
+    appearance: button;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+:where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+}
+
+:where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+}
+
+::placeholder {
+    opacity: 1;
+}
+
+:disabled {
+    cursor: not-allowed;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+}
+
+::-webkit-datetime-edit {
+    display: inline-flex;
+}
+
+::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+}
+
+::-webkit-datetime-edit,
+::-webkit-datetime-edit-year-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-minute-field,
+::-webkit-datetime-edit-second-field,
+::-webkit-datetime-edit-millisecond-field,
+::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+}
+
+:-moz-focusring {
+    outline: auto;
+}
+
+:-moz-ui-invalid {
+    box-shadow: none;
+}

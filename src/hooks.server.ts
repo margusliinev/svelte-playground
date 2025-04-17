@@ -1,6 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
 import { httpLogger } from '$lib/server/logger';
+import { sequence } from '@sveltejs/kit/hooks';
 import { env } from '$env/dynamic/private';
 import { randomUUID } from 'crypto';
 

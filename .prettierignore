@@ -2,5 +2,5 @@
 node_modules
 build
 .env
+src/lib/server/db/migrations
 package-lock.json
-schema.ts
