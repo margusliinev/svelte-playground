@@ -1,14 +1,25 @@
+import type { HandleServerError } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
-import { httpLogger } from '$lib/server/logger';
 import { sequence } from '@sveltejs/kit/hooks';
-import { env } from '$env/dynamic/private';
+import { logger } from '$lib/server/logger';
 import { randomUUID } from 'crypto';
 
-export const logging = (async ({ event, resolve }) => {
+export const handleError: HandleServerError = async ({ event, error, message }) => {
+    event.locals.logger.error(error, message);
+
+    return {
+        success: false,
+        message: 'Internal Server Error',
+    };
+};
+
+export const handleLogging = (async ({ event, resolve }) => {
     const start = performance.now();
-    const requestId = randomUUID();
     const method = event.request.method;
     const path = event.url.pathname;
+    const requestId = randomUUID();
+
+    event.locals.logger = logger.child({ requestId });
 
     const response = await resolve(event);
 
@@ -17,7 +28,6 @@ export const logging = (async ({ event, resolve }) => {
     const status = response.status;
 
     const logData = {
-        requestId,
         method,
         path,
         status,
@@ -25,10 +35,10 @@ export const logging = (async ({ event, resolve }) => {
     };
 
     const level = status >= 500 ? 'error' : status >= 400 ? 'warn' : 'info';
-    if (env.NODE_ENV === 'development') httpLogger[level](`${method} ${path} - ${status} (${duration}ms)`);
-    if (env.NODE_ENV === 'production') httpLogger[level](logData);
+
+    event.locals.logger[level](logData);
 
     return response;
 }) satisfies Handle;
 
-export const handle = sequence(logging);
+export const handle = sequence(handleLogging);
