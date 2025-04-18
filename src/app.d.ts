@@ -5,6 +5,7 @@ declare global {
         interface Error {
             success: boolean;
             message: string;
+            errors?: Record<string, string>;
         }
         interface Locals {
             logger: import('pino').Logger;
