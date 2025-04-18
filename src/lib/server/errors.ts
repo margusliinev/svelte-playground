@@ -22,13 +22,13 @@ const createException = (type: ExceptionKey) => {
     };
 };
 
-export const badRequestException = createException('BAD_REQUEST');
-export const unauthorizedException = createException('UNAUTHORIZED');
-export const paymentRequiredException = createException('PAYMENT_REQUIRED');
-export const forbiddenException = createException('FORBIDDEN');
-export const notFoundException = createException('NOT_FOUND');
-export const methodNotAllowedException = createException('METHOD_NOT_ALLOWED');
-export const conflictException = createException('CONFLICT');
-export const unprocessableEntityException = createException('UNPROCESSABLE_ENTITY');
-export const tooManyRequestsException = createException('TOO_MANY_REQUESTS');
-export const internalServerErrorException = createException('INTERNAL_SERVER_ERROR');
+export const BadRequestException = createException('BAD_REQUEST');
+export const UnauthorizedException = createException('UNAUTHORIZED');
+export const PaymentRequiredException = createException('PAYMENT_REQUIRED');
+export const ForbiddenException = createException('FORBIDDEN');
+export const NotFoundException = createException('NOT_FOUND');
+export const MethodNotAllowedException = createException('METHOD_NOT_ALLOWED');
+export const ConflictException = createException('CONFLICT');
+export const UnprocessableEntityException = createException('UNPROCESSABLE_ENTITY');
+export const TooManyRequestsException = createException('TOO_MANY_REQUESTS');
+export const InternalServerErrorException = createException('INTERNAL_SERVER_ERROR');
