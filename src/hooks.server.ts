@@ -18,9 +18,11 @@ export const handleLogging = (async ({ event, resolve }) => {
     const start = performance.now();
     const method = event.request.method;
     const path = event.url.pathname;
+    const userAgent = event.request.headers.get('user-agent') || 'unknown';
+    const referer = event.request.headers.get('referer') || 'unknown';
     const requestId = randomUUID();
 
-    event.locals.logger = logger.child({ requestId: env.NODE_ENV === 'production' ? requestId : undefined });
+    event.locals.logger = logger.child({ requestId });
 
     const response = await resolve(event);
 
@@ -31,14 +33,17 @@ export const handleLogging = (async ({ event, resolve }) => {
     const logData = {
         method,
         path,
+        userAgent,
+        referer,
+        requestId,
         status,
         duration,
     };
 
     const level = status >= 500 ? 'error' : status >= 400 ? 'warn' : 'info';
-    const message = env.NODE_ENV === 'production' ? logData : `${method} ${path} - ${status} (${duration}ms)`;
 
-    event.locals.logger[level](message);
+    if (env.NODE_ENV === 'development') logger[level](`${method} ${path} - ${status} (${duration}ms)`);
+    if (env.NODE_ENV === 'production') logger[level](logData);
 
     return response;
 }) satisfies Handle;
