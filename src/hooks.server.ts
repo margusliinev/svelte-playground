@@ -2,6 +2,7 @@ import type { HandleServerError } from '@sveltejs/kit';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 import { logger } from '$lib/server/logger';
+import { env } from '$env/dynamic/private';
 import { randomUUID } from 'crypto';
 
 export const handleError: HandleServerError = async ({ event, error, message }) => {
@@ -19,7 +20,7 @@ export const handleLogging = (async ({ event, resolve }) => {
     const path = event.url.pathname;
     const requestId = randomUUID();
 
-    event.locals.logger = logger.child({ requestId });
+    event.locals.logger = logger.child({ requestId: env.NODE_ENV === 'production' ? requestId : undefined });
 
     const response = await resolve(event);
 
@@ -35,8 +36,9 @@ export const handleLogging = (async ({ event, resolve }) => {
     };
 
     const level = status >= 500 ? 'error' : status >= 400 ? 'warn' : 'info';
+    const message = env.NODE_ENV === 'production' ? logData : `${method} ${path} - ${status} (${duration}ms)`;
 
-    event.locals.logger[level](logData);
+    event.locals.logger[level](message);
 
     return response;
 }) satisfies Handle;
