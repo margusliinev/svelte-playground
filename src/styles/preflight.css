@@ -47,8 +47,6 @@ em {
 }
 
 code,
-kbd,
-samp,
 pre {
     font-size: 1em;
 }
@@ -85,21 +83,12 @@ table {
 button,
 input,
 select,
+option,
 optgroup,
 textarea {
-    color: inherit;
-    background-color: transparent;
     font: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
-    letter-spacing: inherit;
-    border-radius: 0;
-    opacity: 1;
-}
-
-button,
-input:where([type='button'], [type='reset'], [type='submit']) {
-    appearance: button;
 }
 
 button {
@@ -108,61 +97,4 @@ button {
 
 textarea {
     resize: vertical;
-}
-
-:where(select:is([multiple], [size])) optgroup {
-    font-weight: bolder;
-}
-
-:where(select:is([multiple], [size])) optgroup option {
-    padding-inline-start: 20px;
-}
-
-::placeholder {
-    opacity: 1;
-}
-
-:disabled {
-    cursor: not-allowed;
-}
-
-[hidden] {
-    display: none !important;
-}
-
-::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-
-::-webkit-date-and-time-value {
-    min-height: 1lh;
-    text-align: inherit;
-}
-
-::-webkit-datetime-edit {
-    display: inline-flex;
-}
-
-::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
-}
-
-::-webkit-datetime-edit,
-::-webkit-datetime-edit-year-field,
-::-webkit-datetime-edit-month-field,
-::-webkit-datetime-edit-day-field,
-::-webkit-datetime-edit-hour-field,
-::-webkit-datetime-edit-minute-field,
-::-webkit-datetime-edit-second-field,
-::-webkit-datetime-edit-millisecond-field,
-::-webkit-datetime-edit-meridiem-field {
-    padding-block: 0;
-}
-
-:-moz-focusring {
-    outline: auto;
-}
-
-:-moz-ui-invalid {
-    box-shadow: none;
 }

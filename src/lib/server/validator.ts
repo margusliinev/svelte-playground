@@ -1,7 +1,6 @@
-import { BadRequestException } from './errors';
 import { z } from 'zod';
 
-export const validate = <T>(schema: z.ZodType<T>, data: unknown): T => {
+export const validate = <T>(schema: z.ZodType<T>, data: unknown) => {
     const result = schema.safeParse(data);
     if (!result.success) {
         const errors = result.error.issues.reduce(
@@ -13,8 +12,7 @@ export const validate = <T>(schema: z.ZodType<T>, data: unknown): T => {
             },
             {} as Record<keyof T, string>,
         );
-
-        throw BadRequestException(errors);
+        return { data: null, errors: errors };
     }
-    return result.data;
+    return { data: result.data, errors: null };
 };
