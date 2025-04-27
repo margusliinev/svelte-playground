@@ -34,6 +34,7 @@ hr {
 a {
     color: inherit;
     text-decoration: inherit;
+    -webkit-text-decoration: inherit;
 }
 
 b,
@@ -89,6 +90,15 @@ textarea {
     font: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+}
+
+input:where([type='button'], [type='reset'], [type='submit']) {
+    appearance: button;
 }
 
 button {

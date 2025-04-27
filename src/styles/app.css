@@ -7,6 +7,10 @@
     --color-foreground: #fafafa;
 }
 
+html {
+    color-scheme: dark;
+}
+
 body {
     font-family: var(--font-inter);
     background-color: var(--color-background);
